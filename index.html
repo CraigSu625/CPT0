@@ -1,10 +1,433 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>我的专属网站</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>中国暴瘦协会 | 官方网站</title>
+
+<meta name="description" content="中国暴瘦协会学生自发团体官方网站，展示组织介绍、章程及活动信息。">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+    color: #263448;
+    background: #f5f7fa;
+    line-height: 1.8;
+}
+
+/* 顶部 */
+
+header {
+    background: #10243e;
+    color: white;
+    padding: 25px 7%;
+    border-bottom: 3px solid #c4a46a;
+}
+
+.header-content {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.english {
+    font-size: 12px;
+    color: #c4a46a;
+    letter-spacing: 3px;
+}
+
+/* 导航 */
+
+nav {
+    background: #183653;
+    padding: 14px 7%;
+}
+
+.nav-content {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #d7b77b;
+}
+
+/* 首页 */
+
+.hero {
+    background:
+    linear-gradient(120deg,
+    rgba(12,31,53,.97),
+    rgba(35,70,103,.88));
+
+    color: white;
+    padding: 115px 20px;
+    text-align: center;
+}
+
+.hero-label {
+    color: #d7b77b;
+    letter-spacing: 5px;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #dce5ee;
+    font-size: 16px;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 35px;
+    border: 1px solid #d7b77b;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.hero-button:hover {
+    background: #c4a46a;
+    color: #10243e;
+}
+
+/* 主体 */
+
+.container {
+    max-width: 1150px;
+    margin: 65px auto;
+    padding: 0 22px;
+}
+
+.section {
+    margin-bottom: 65px;
+    scroll-margin-top: 25px;
+}
+
+.section-title {
+    font-size: 25px;
+    color: #183653;
+    border-left: 4px solid #c4a46a;
+    padding-left: 16px;
+    margin-bottom: 28px;
+}
+
+.section-subtitle {
+    color: #9a8054;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+/* 卡片 */
+
+.card {
+    background: white;
+    padding: 32px;
+    border: 1px solid #e9edf2;
+    box-shadow: 0 5px 20px rgba(20,40,65,.04);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.item {
+    background: white;
+    padding: 28px;
+    border-top: 3px solid #c4a46a;
+    box-shadow: 0 5px 20px rgba(20,40,65,.04);
+}
+
+.item h3 {
+    color: #183653;
+    margin-bottom: 12px;
+}
+
+/* 公告 */
+
+.notice {
+    padding: 20px 0;
+    border-bottom: 1px solid #e8edf2;
+}
+
+.notice span {
+    color: #9a8054;
+    font-size: 12px;
+}
+
+/* 页脚 */
+
+footer {
+    background: #10243e;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 45px 20px;
+    font-size: 13px;
+}
+
+footer .footer-name {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* 手机适配 */
+
+@media(max-width:700px) {
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .hero {
+        padding: 85px 20px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-content {
+        gap: 15px;
+    }
+
+    .container {
+        margin: 45px auto;
+    }
+}
+
+</style>
 </head>
+
 <body>
-    <h1>欢迎来到我的个人主页！</h1>
-    <p>这是我的第一个网站，域名是 cpt.homes。</p>
+
+<header>
+    <div class="header-content">
+        <div class="logo">中国暴瘦协会</div>
+        <div class="english">
+            CHINA BAOSHOU ASSOCIATION
+        </div>
+    </div>
+</header>
+
+<nav>
+    <div class="nav-content">
+        <a href="#home">首页</a>
+        <a href="#about">协会简介</a>
+        <a href="#organization">组织架构</a>
+        <a href="#charter">协会章程</a>
+        <a href="#news">公告动态</a>
+        <a href="#contact">联系我们</a>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+
+    <div class="hero-label">
+        ORGANIZATION · ESTABLISHED 2026
+    </div>
+
+    <h1>中国暴瘦协会</h1>
+
+    <p>
+        凝聚成员力量 · 倡导理性交流 · 共同成长
+    </p>
+
+    <a href="#about" class="hero-button">
+        了解协会
+    </a>
+
+</section>
+
+<main class="container">
+
+    <section class="section" id="about">
+
+        <div class="section-subtitle">
+            ABOUT US
+        </div>
+
+        <h2 class="section-title">
+            协会简介
+        </h2>
+
+        <div class="card">
+            <p>
+                中国暴瘦协会是由学生自发发起的交流团体。
+                本网站用于展示协会基本信息、内部组织架构、
+                活动动态及相关规章制度。
+            </p>
+
+            <p>
+                协会倡导理性、友好、尊重与责任，
+                鼓励成员通过健康、安全、合法的方式开展交流。
+                反对极端减重行为、欺凌、威胁及任何侵犯他人权益的行为。
+            </p>
+        </div>
+
+    </section>
+
+    <section class="section" id="organization">
+
+        <div class="section-subtitle">
+            ORGANIZATION
+        </div>
+
+        <h2 class="section-title">
+            组织架构
+        </h2>
+
+        <div class="grid">
+
+            <div class="item">
+                <h3>协会负责人</h3>
+                <p>负责日常协调与组织事务。</p>
+            </div>
+
+            <div class="item">
+                <h3>组织事务</h3>
+                <p>负责成员沟通与内部协调。</p>
+            </div>
+
+            <div class="item">
+                <h3>宣传事务</h3>
+                <p>负责网站维护及信息发布。</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="charter">
+
+        <div class="section-subtitle">
+            CHARTER
+        </div>
+
+        <h2 class="section-title">
+            协会章程
+        </h2>
+
+        <div class="card">
+
+            <p>第一条：成员应遵守法律法规及学校管理规定。</p>
+
+            <p>第二条：成员之间应平等交流、相互尊重。</p>
+
+            <p>第三条：协会活动坚持自愿、公开、理性原则。</p>
+
+            <p>第四条：不得以协会名义威胁、骚扰或伤害他人。</p>
+
+            <p>第五条：组织事务由成员共同讨论决定。</p>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="news">
+
+        <div class="section-subtitle">
+            NEWS & ANNOUNCEMENTS
+        </div>
+
+        <h2 class="section-title">
+            公告动态
+        </h2>
+
+        <div class="card">
+
+            <div class="notice">
+                <span>2026 · 组织公告</span>
+                <p>中国暴瘦协会官方网站正式建立。</p>
+            </div>
+
+            <div class="notice">
+                <span>组织信息</span>
+                <p>协会相关活动及通知将在本栏目发布。</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="contact">
+
+        <div class="section-subtitle">
+            CONTACT US
+        </div>
+
+        <h2 class="section-title">
+            联系我们
+        </h2>
+
+        <div class="card">
+            <p>如需了解协会相关信息，可联系协会负责人。</p>
+            <p>官方网站：cpt.homes</p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div class="footer-name">
+        中国暴瘦协会
+    </div>
+
+    <p>
+        CHINA BAOSHOU ASSOCIATION
+    </p>
+
+    <p>
+        学生自发交流团体 · 非政府机构
+    </p>
+
+    <p style="margin-top:20px">
+        © 2026 中国暴瘦协会
+    </p>
+
+</footer>
+
 </body>
 </html>
