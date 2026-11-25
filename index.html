@@ -5,422 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>武中致瘦俱乐部</title>
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-    --bg: #faf3f0;
-    --text: #2b1a1a;
-    --sub-text: #7a5555;
-    --muted: #86868b;
-    --card-bg: rgba(255, 255, 255, 0.72);
-    --card-border: rgba(255,255,255,0.6);
-    --dept-bg: rgba(255,255,255,0.6);
-    --notice-bg: rgba(255,255,255,0.55);
-    --doc-bg: rgba(255,255,255,0.6);
-    --nav-bg: rgba(255,255,255,0.62);
-    --nav-btn: #442828;
-    --nav-active-bg: rgba(200,16,46,0.12);
-    --accent: #c8102e;
-    --divider: #e6b8b8;
-    --member-text: #442828;
-    --shadow: rgba(200,16,46,0.08);
-    --nav-shadow: rgba(200,16,46,0.12);
+    --bg: #faf3f0; --text: #2b1a1a; --sub-text: #7a5555; --muted: #86868b;
+    --card-bg: rgba(255,255,255,0.72); --card-border: rgba(255,255,255,0.6);
+    --dept-bg: rgba(255,255,255,0.6); --notice-bg: rgba(255,255,255,0.55);
+    --doc-bg: rgba(255,255,255,0.6); --nav-bg: rgba(255,255,255,0.62);
+    --nav-btn: #442828; --nav-active-bg: rgba(200,16,46,0.12); --accent: #c8102e;
+    --divider: #e6b8b8; --member-text: #442828; --shadow: rgba(200,16,46,0.08);
+    --nav-shadow: rgba(200,16,46,0.12); --overlay: rgba(0,0,0,0.35);
 }
-
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #1a0d10;
-        --text: #f3e7e4;
-        --sub-text: #d9a3a8;
-        --muted: #b09a9c;
-        --card-bg: rgba(48, 22, 26, 0.72);
-        --card-border: rgba(255,255,255,0.12);
-        --dept-bg: rgba(48,22,26,0.6);
-        --notice-bg: rgba(48,22,26,0.55);
-        --doc-bg: rgba(48,22,26,0.6);
-        --nav-bg: rgba(48, 22, 26, 0.62);
-        --nav-btn: #f3e7e4;
-        --nav-active-bg: rgba(230,57,70,0.18);
-        --accent: #e63946;
-        --divider: #5c3338;
-        --member-text: #e8d4d4;
-        --shadow: rgba(0,0,0,0.35);
-        --nav-shadow: rgba(0,0,0,0.4);
+        --bg: #1a0d10; --text: #f3e7e4; --sub-text: #d9a3a8; --muted: #b09a9c;
+        --card-bg: rgba(48,22,26,0.72); --card-border: rgba(255,255,255,0.12);
+        --dept-bg: rgba(48,22,26,0.6); --notice-bg: rgba(48,22,26,0.55);
+        --doc-bg: rgba(48,22,26,0.6); --nav-bg: rgba(48,22,26,0.62);
+        --nav-btn: #f3e7e4; --nav-active-bg: rgba(230,57,70,0.18); --accent: #e63946;
+        --divider: #5c3338; --member-text: #e8d4d4; --shadow: rgba(0,0,0,0.35);
+        --nav-shadow: rgba(0,0,0,0.4); --overlay: rgba(0,0,0,0.6);
     }
 }
-
 body {
-    font-family: "SF Pro Display", "Microsoft YaHei", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.8;
-    min-height: 100vh;
-    overflow-x: hidden;
+    font-family: "SF Pro Display","Microsoft YaHei",sans-serif; background: var(--bg);
+    color: var(--text); line-height: 1.8; min-height: 100vh; overflow-x: hidden;
     transition: background 0.35s ease, color 0.35s ease;
 }
-
-/* 顶部标题 */
-.app-header {
-    padding: 40px 20px 20px;
-    text-align: center;
-}
-
-.app-header h1 {
-    font-size: 46px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    color: var(--accent);
-}
-
-.app-header .sub-title {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--sub-text);
-}
-
-.app-header p {
-    color: var(--muted);
-    margin-top: 6px;
-    font-size: 15px;
-}
-
-/* 页面容器 */
-.page-wrap {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px 18px 120px;
-}
-
-/* 页面面板：淡入缩放 */
-.page-panel {
-    display: none;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.page-panel.active {
-    display: block;
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* 液态玻璃卡片 */
+.app-header { padding: 40px 20px 20px; text-align: center; }
+.app-header h1 { font-size: 46px; font-weight: 800; letter-spacing: 4px; color: var(--accent); }
+.app-header .sub-title { font-size: 18px; font-weight: 500; color: var(--sub-text); }
+.app-header p { color: var(--muted); margin-top: 6px; font-size: 15px; }
+.page-wrap { max-width: 960px; margin: 0 auto; padding: 20px 18px 120px; }
+.page-panel { display: none; opacity: 0; transform: scale(0.95); transition: opacity 0.35s ease, transform 0.35s ease; }
+.page-panel.active { display: block; opacity: 1; transform: scale(1); }
 .glass-card {
-    background: var(--card-bg);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    padding: 28px;
-    border-radius: 22px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 8px 30px var(--shadow);
+    background: var(--card-bg); backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px); padding: 28px; border-radius: 22px;
+    border: 1px solid var(--card-border); box-shadow: 0 8px 30px var(--shadow);
 }
-
-h2 {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 18px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--divider);
-}
-
-h3 {
-    color: var(--accent);
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.leader {
-    background: rgba(200,16,46,0.92);
-    color: white;
-    text-align: center;
-    padding: 22px;
-    border-radius: 16px;
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.departments {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 25px;
-}
-
-.department {
-    background: var(--dept-bg);
-    border: 1px solid var(--card-border);
-    padding: 20px;
-    border-radius: 16px;
-}
-
-.department p {
-    border-bottom: 1px dashed var(--divider);
-    padding-bottom: 8px;
-    margin-bottom: 6px;
-}
-
-.members {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.member {
-    background: var(--dept-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 20px;
-    text-align: center;
-}
-
-.member strong {
-    color: var(--accent);
-    font-size: 22px;
-}
-
-.member p {
-    font-size: 14px;
-    margin: 6px 0;
-    color: var(--member-text);
-}
-
-.notice {
-    background: var(--notice-bg);
-    border-left: 4px solid var(--accent);
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 12px;
-}
-
-.doc-block {
-    background: var(--doc-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 18px;
-    margin: 14px 0;
-}
-
-.doc-time {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-/* 底部液态玻璃导航 */
-.bottom-nav {
-    position: fixed;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(960px, 94vw);
-    background: var(--nav-bg);
-    backdrop-filter: saturate(180%) blur(24px);
-    -webkit-backdrop-filter: saturate(180%) blur(24px);
-    border-radius: 28px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 8px 30px var(--nav-shadow);
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 8px;
-    z-index: 99;
-}
-
-.nav-btn {
-    background: transparent;
-    border: none;
-    color: var(--nav-btn);
-    font-size: 14px;
-    font-weight: 600;
-    padding: 8px 10px;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.nav-btn.active {
-    background: var(--nav-active-bg);
-    color: var(--accent);
-}
-
-footer {
-    text-align: center;
-    padding: 30px 20px 140px;
-    color: var(--muted);
-    font-size: 14px;
-}
-
-@media(max-width:850px) {
-    .members {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width:650px) {
-    .departments,
-    .members {
-        grid-template-columns: 1fr;
-    }
-    .app-header h1 {
-        font-size: 30px;
-    }
-    .bottom-nav {
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-    .nav-btn {
-        font-size: 12px;
-        padding: 6px 8px;
-    }
-}
+h2 { font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--divider); }
+h3 { color: var(--accent); font-size: 18px; margin-bottom: 8px; }
+.leader { background: rgba(200,16,46,0.92); color: white; text-align: center; padding: 22px; border-radius: 16px; font-size: 20px; font-weight: 600; }
+.departments { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 25px; }
+.department { background: var(--dept-bg); border: 1px solid var(--card-border); padding: 20px; border-radius: 16px; }
+.department p { border-bottom: 1px dashed var(--divider); padding-bottom: 8px; margin-bottom: 6px; }
+.members { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
+.member { background: var(--dept-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; text-align: center; }
+.member strong { color: var(--accent); font-size: 22px; }
+.member p { font-size: 14px; margin: 6px 0; color: var(--member-text); }
+.notice { background: var(--notice-bg); border-left: 4px solid var(--accent); padding: 15px; margin-top: 20px; border-radius: 12px; }
+.doc-block { background: var(--doc-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 18px; margin: 14px 0; }
+.doc-time { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.punish-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; margin-top: 10px; }
+.punish-box { background: var(--dept-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 22px 16px; text-align: center; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.punish-box:hover { transform: translateY(-3px); box-shadow: 0 10px 28px var(--shadow); }
+.punish-box:active { transform: scale(0.97); }
+.punish-box .p-name { color: var(--accent); font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+.punish-box .p-count { font-size: 14px; color: var(--member-text); margin: 4px 0; }
+.punish-box .p-count b { color: var(--accent); font-size: 18px; }
+.punish-box .p-hint { margin-top: 10px; font-size: 12px; color: var(--muted); }
+.modal-overlay { position: fixed; inset: 0; background: var(--overlay); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.modal-overlay.show { opacity: 1; pointer-events: auto; }
+.modal-card { background: var(--card-bg); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); border: 1px solid var(--card-border); border-radius: 22px; box-shadow: 0 12px 40px var(--nav-shadow); max-width: 420px; width: 100%; padding: 28px; position: relative; transform: scale(0.9); opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; }
+.modal-overlay.show .modal-card { opacity: 1; transform: scale(1); }
+.modal-close { position: absolute; top: 14px; right: 16px; background: transparent; border: none; color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer; }
+.modal-card h3 { margin-bottom: 14px; }
+.modal-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed var(--divider); font-size: 15px; }
+.modal-row .label { color: var(--muted); }
+.modal-row .value { color: var(--text); font-weight: 600; text-align: right; }
+.modal-row .value.accent { color: var(--accent); }
+.bottom-nav { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); width: min(960px,94vw); background: var(--nav-bg); backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px); border-radius: 28px; border: 1px solid var(--card-border); box-shadow: 0 8px 30px var(--nav-shadow); display: flex; justify-content: space-around; padding: 10px 8px; z-index: 99; }
+.nav-btn { background: transparent; border: none; color: var(--nav-btn); font-size: 14px; font-weight: 600; padding: 8px 10px; border-radius: 18px; cursor: pointer; transition: all 0.25s ease; }
+.nav-btn.active { background: var(--nav-active-bg); color: var(--accent); }
+footer { text-align: center; padding: 30px 20px 140px; color: var(--muted); font-size: 14px; }
+@media(max-width:850px){ .members,.punish-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:650px){ .departments,.members,.punish-grid{grid-template-columns:1fr;} .app-header h1{font-size:30px;} .bottom-nav{flex-wrap:wrap;gap:6px;} .nav-btn{font-size:12px;padding:6px 8px;} }
 </style>
 </head>
-
 <body>
-
-<header class="app-header">
-    <h1>武中致瘦俱乐部<span class="sub-title">（官网）</span></h1>
-    <p>小组内部组织展示</p>
-</header>
-
+<header class="app-header"><h1>武中致瘦俱乐部<span class="sub-title">（官网）</span></h1><p>小组内部组织展示</p></header>
 <main class="page-wrap">
-
-    <section id="about" class="page-panel active">
-        <div class="glass-card">
-            <h2>一、俱乐部简介</h2>
-            <p>
-                武中致瘦俱乐部是成员自发组建的内部兴趣打卡小组，
-                负责统筹小组事务、协调各分支工作。
-                俱乐部下设武中致瘦派和武中致瘦协会两个分支。
-            </p>
-            <div class="notice">
-                本页面仅用于小组内部展示组织架构及成员信息。
-                涉及体重管理的活动应遵循科学、健康、安全的原则，
-                不提倡极端节食或不健康的快速减重方式。
-            </div>
-        </div>
-    </section>
-
-    <section id="structure" class="page-panel">
-        <div class="glass-card">
-            <h2>二、组织架构</h2>
-            <div class="leader">
-                武中致瘦派主席：桂 A<br>
-                <small>分支牵头人</small>
-            </div>
-            <div style="text-align:center; padding:15px;">
-                │<br>
-                ▼
-            </div>
-            <div class="leader">
-                武中致瘦俱乐部<br>
-                俱乐部部长：秀
-            </div>
-            <div class="departments">
-                <div class="department">
-                    <h3>武中致瘦派</h3>
-                    <p><strong>主席：</strong>桂 A</p>
-                    <p><strong>副主席：</strong>娜</p>
-                    <p><strong>纪检主任：</strong>桂 A</p>
-                    <p><strong>秘书长：</strong>QY</p>
-                </div>
-                <div class="department">
-                    <h3>武中致瘦协会</h3>
-                    <p><strong>主席：</strong>娜</p>
-                    <p><strong>副主席：</strong>娜</p>
-                    <p><strong>宣传部长：</strong>桂 A</p>
-                    <p><strong>办公厅主任：</strong>秀</p>
-                    <p><strong>组织部长：</strong>QY</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="leaders" class="page-panel">
-        <div class="glass-card">
-            <h2>三、成员岗位</h2>
-            <div class="members">
-                <div class="member">
-                    <strong>桂 A</strong>
-                    <p>武中致瘦派主席</p>
-                    <p>纪检主任</p>
-                    <p>武中致瘦协会宣传部长</p>
-                </div>
-                <div class="member">
-                    <strong>娜</strong>
-                    <p>武中致瘦派副主席</p>
-                    <p>武中致瘦协会主席</p>
-                </div>
-                <div class="member">
-                    <strong>QY</strong>
-                    <p>武中致瘦派秘书长</p>
-                    <p>武中致瘦协会组织部长</p>
-                </div>
-                <div class="member">
-                    <strong>秀</strong>
-                    <p>武中致瘦俱乐部部长</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="minutes" class="page-panel">
-        <div class="glass-card">
-            <h2>四、会议纪要</h2>
-            <div class="doc-block">
-                <h3>第一次小组会议纪要</h3>
-                <div class="doc-time">会议时间：待填写</div>
-                <p>会议内容：待补充，记录本次会议讨论事项、决议与打卡安排。</p>
-            </div>
-            <div class="doc-block">
-                <h3>第二次小组会议纪要</h3>
-                <div class="doc-time">会议时间：待填写</div>
-                <p>会议内容：待补充。</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="punish" class="page-panel">
-        <div class="glass-card">
-            <h2>五、处分通告</h2>
-            <div class="doc-block">
-                <h3>处分通告（暂无）</h3>
-                <div class="doc-time">发布时间：待填写</div>
-                <p>本栏目用于记录小组内部纪律提醒与处理决定，内容将在需要时更新。</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="principles" class="page-panel">
-        <div class="glass-card">
-            <h2>六、组织原则</h2>
-            <p>1. 俱乐部遵循《桂 A 第一定律》，即：“不吃肯定不肥”。</p>
-            <p>2. 俱乐部实行“双权主席制”，双主席共同执掌权责，协作管理俱乐部事务。</p>
-        </div>
-    </section>
-
+<section id="about" class="page-panel active"><div class="glass-card"><h2>一、俱乐部简介</h2><p>本俱乐部是面向高中生的健康减脂兴趣小组，遵循既定原则，分级管理，赏罚分明，旨在通过科学合理的饮食与运动，帮助成员达成健康减脂减重的目标。本俱乐部坚决拥护中国共产党的领导，不含有任何危害社会和人身安全的因素，遵循自愿加入的原则。</p><div class="notice">本页面仅用于小组内部展示组织架构及成员信息。涉及体重管理的活动应遵循科学、健康、安全的原则，不提倡极端节食或不健康的快速减重方式。</div></div></section>
+<section id="structure" class="page-panel"><div class="glass-card"><h2>二、组织架构</h2><div class="leader">武中致瘦派主席：桂 A<br><small>分支牵头人</small></div><div style="text-align:center;padding:15px;">│<br>▼</div><div class="leader">武中致瘦俱乐部<br>俱乐部部长：秀</div><div class="departments"><div class="department"><h3>武中致瘦派</h3><p><strong>主席：</strong>桂 A</p><p><strong>副主席：</strong>娜</p><p><strong>纪检主任：</strong>桂 A</p><p><strong>秘书长：</strong>QY</p></div><div class="department"><h3>武中致瘦协会</h3><p><strong>主席：</strong>娜</p><p><strong>副主席：</strong>娜</p><p><strong>宣传部长：</strong>桂 A</p><p><strong>办公厅主任：</strong>秀</p><p><strong>组织部长：</strong>QY</p></div></div></div></section>
+<section id="leaders" class="page-panel"><div class="glass-card"><h2>三、成员岗位</h2><div class="members"><div class="member"><strong>桂 A</strong><p>武中致瘦派主席</p><p>纪检主任</p><p>武中致瘦协会宣传部长</p></div><div class="member"><strong>娜</strong><p>武中致瘦派副主席</p><p>武中致瘦协会主席</p></div><div class="member"><strong>QY</strong><p>武中致瘦派秘书长</p><p>武中致瘦协会组织部长</p></div><div class="member"><strong>秀</strong><p>武中致瘦俱乐部部长</p></div></div></div></section>
+<section id="minutes" class="page-panel"><div class="glass-card"><h2>四、会议纪要</h2><div class="doc-block"><h3>第一次小组会议纪要</h3><div class="doc-time">会议时间：待填写</div><p>会议内容：待补充，记录本次会议讨论事项、决议与打卡安排。</p></div><div class="doc-block"><h3>第二次小组会议纪要</h3><div class="doc-time">会议时间：待填写</div><p>会议内容：待补充。</p></div></div></section>
+<section id="punish" class="page-panel"><div class="glass-card"><h2>五、处分通告</h2><p style="color:var(--muted);font-size:14px;margin-bottom:14px;">点击成员方框，查看当前生效处分详情。</p><div class="punish-grid"><div class="punish-box" data-person="guiA"><div class="p-name">桂 A</div><div class="p-count">累计处分：<b>2</b> 次</div><div class="p-count">当前生效：<b>1</b> 次</div><div class="p-hint">点击查看详情</div></div><div class="punish-box" data-person="na"><div class="p-name">娜</div><div class="p-count">累计处分：<b>2</b> 次</div><div class="p-count">当前生效：<b>1</b> 次</div><div class="p-hint">点击查看详情</div></div><div class="punish-box" data-person="qy"><div class="p-name">QY</div><div class="p-count">累计处分：<b>1</b> 次</div><div class="p-count">当前生效：<b>1</b> 次</div><div class="p-hint">点击查看详情</div></div><div class="punish-box" data-person="xiu"><div class="p-name">秀</div><div class="p-count">累计处分：<b>2</b> 次</div><div class="p-count">当前生效：<b>1</b> 次</div><div class="p-hint">点击查看详情</div></div></div></div></section>
+<section id="principles" class="page-panel"><div class="glass-card"><h2>六、组织原则</h2><p>1. 俱乐部遵循《桂 A 第一定律》，即：“不吃肯定不肥”。</p><p>2. 俱乐部实行“双权主席制”，双主席共同执掌权责，协作管理俱乐部事务。</p></div></section>
 </main>
-
-<nav class="bottom-nav">
-    <button class="nav-btn active" data-target="about">简介</button>
-    <button class="nav-btn" data-target="structure">架构</button>
-    <button class="nav-btn" data-target="leaders">成员</button>
-    <button class="nav-btn" data-target="minutes">会议纪要</button>
-    <button class="nav-btn" data-target="punish">处分通告</button>
-    <button class="nav-btn" data-target="principles">原则</button>
-</nav>
-
+<nav class="bottom-nav"><button class="nav-btn active" data-target="about">简介</button><button class="nav-btn" data-target="structure">架构</button><button class="nav-btn" data-target="leaders">成员</button><button class="nav-btn" data-target="minutes">会议纪要</button><button class="nav-btn" data-target="punish">处分通告</button><button class="nav-btn" data-target="principles">原则</button></nav>
 <footer>武中致瘦俱乐部 · 小组内部信息展示页面</footer>
-
+<div class="modal-overlay" id="punishModal"><div class="modal-card"><button class="modal-close" id="modalClose">&times;</button><h3 id="modalName">处分详情</h3><div class="modal-row"><span class="label">累计处分次数</span><span class="value" id="modalTotal">-</span></div><div class="modal-row"><span class="label">当前生效次数</span><span class="value" id="modalActive">-</span></div><div class="modal-row"><span class="label">处分等级</span><span class="value accent" id="modalLevel">-</span></div><div class="modal-row"><span class="label">处分事由</span><span class="value" id="modalReason">-</span></div><div class="modal-row"><span class="label">生效状态</span><span class="value" id="modalStatus">生效中</span></div></div></div>
 <script>
 const panels = document.querySelectorAll('.page-panel');
 const btns = document.querySelectorAll('.nav-btn');
-
 btns.forEach(btn => {
     btn.addEventListener('click', () => {
         const target = btn.dataset.target;
@@ -430,7 +107,29 @@ btns.forEach(btn => {
         document.getElementById(target).classList.add('active');
     });
 });
+const punishData = {
+    guiA: { name: '桂 A', total: 2, active: 1, level: '大过 C', reason: '不遵守俱乐部膳食规定' },
+    na:   { name: '娜',   total: 2, active: 1, level: '大过 C', reason: '吃辣条类食物' },
+    qy:   { name: 'QY',  total: 1, active: 1, level: '大过 C', reason: '吃辣条类食物' },
+    xiu:  { name: '秀',   total: 2, active: 1, level: '大过 C', reason: '吃辣条类食物' }
+};
+const modal = document.getElementById('punishModal');
+function openModal(key) {
+    const d = punishData[key]; if (!d) return;
+    document.getElementById('modalName').textContent = d.name + ' 的处分详情';
+    document.getElementById('modalTotal').textContent = d.total + ' 次';
+    document.getElementById('modalActive').textContent = d.active + ' 次';
+    document.getElementById('modalLevel').textContent = d.level;
+    document.getElementById('modalReason').textContent = d.reason;
+    document.getElementById('modalStatus').textContent = '生效中';
+    modal.classList.add('show');
+}
+function closeModal() { modal.classList.remove('show'); }
+document.querySelectorAll('.punish-box').forEach(box => {
+    box.addEventListener('click', () => openModal(box.dataset.person));
+});
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 </script>
-
 </body>
 </html>
