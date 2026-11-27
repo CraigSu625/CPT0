@@ -30,7 +30,7 @@
 }
 body { font-family: "SF Pro Display","Microsoft YaHei",sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh; overflow-x: hidden; transition: background 0.35s ease, color 0.35s ease; }
 .ticker { position: fixed; top: 0; left: 0; width: 100%; background: var(--ticker-bg); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); color: var(--ticker-text); overflow: hidden; z-index: 300; padding: 8px 0; pointer-events: none; user-select: none; }
-.ticker-track { display: flex; width: max-content; white-space: nowrap; animation: ticker-scroll 18s linear infinite; animation-direction: reverse; }
+.ticker-track { display: flex; width: max-content; white-space: nowrap; animation: ticker-scroll 25s linear infinite; }
 .ticker-track span { flex-shrink: 0; padding-right: 60px; font-size: 15px; font-weight: 600; letter-spacing: 1px; }
 @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .app-header { padding: 64px 20px 20px; text-align: center; }
