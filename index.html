@@ -14,6 +14,7 @@
     --nav-btn: #442828; --nav-active-bg: rgba(200,16,46,0.12); --accent: #c8102e;
     --divider: #e6b8b8; --member-text: #442828; --shadow: rgba(200,16,46,0.08);
     --nav-shadow: rgba(200,16,46,0.12); --overlay: rgba(0,0,0,0.35);
+    --ticker-bg: rgba(200,16,46,0.9); --ticker-text: #ffffff;
 }
 @media (prefers-color-scheme: dark) {
     :root {
@@ -24,10 +25,15 @@
         --nav-btn: #f3e7e4; --nav-active-bg: rgba(230,57,70,0.18); --accent: #e63946;
         --divider: #5c3338; --member-text: #e8d4d4; --shadow: rgba(0,0,0,0.35);
         --nav-shadow: rgba(0,0,0,0.4); --overlay: rgba(0,0,0,0.6);
+        --ticker-bg: rgba(230,57,70,0.9); --ticker-text: #ffffff;
     }
 }
 body { font-family: "SF Pro Display","Microsoft YaHei",sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh; overflow-x: hidden; transition: background 0.35s ease, color 0.35s ease; }
-.app-header { padding: 40px 20px 20px; text-align: center; }
+.ticker { position: fixed; top: 0; left: 0; width: 100%; background: var(--ticker-bg); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); color: var(--ticker-text); overflow: hidden; z-index: 300; padding: 8px 0; pointer-events: none; user-select: none; }
+.ticker-track { display: flex; width: max-content; white-space: nowrap; animation: ticker-scroll 18s linear infinite; animation-direction: reverse; }
+.ticker-track span { flex-shrink: 0; padding-right: 60px; font-size: 15px; font-weight: 600; letter-spacing: 1px; }
+@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.app-header { padding: 64px 20px 20px; text-align: center; }
 .app-header h1 { font-size: 46px; font-weight: 800; letter-spacing: 4px; color: var(--accent); }
 .app-header .sub-title { font-size: 18px; font-weight: 500; color: var(--sub-text); }
 .app-header p { color: var(--muted); margin-top: 6px; font-size: 15px; }
@@ -85,6 +91,7 @@ footer { text-align: center; padding: 30px 20px 140px; color: var(--muted); font
 </style>
 </head>
 <body>
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>📢 通知：武中致瘦俱乐部第二届代表大会，将于 2026 年 11 月 28 日 23:00 通过微信电话召开，请全体成员准时参加。</span><span>📢 通知：武中致瘦俱乐部第二届代表大会，将于 2026 年 11 月 28 日 23:00 通过微信电话召开，请全体成员准时参加。</span></div></div>
 <header class="app-header"><h1>武中致瘦俱乐部<span class="sub-title">（官网）</span></h1><p>小组内部组织展示</p></header>
 <main class="page-wrap">
 <section id="about" class="page-panel active"><div class="glass-card"><h2>一、俱乐部简介</h2><p>本俱乐部是面向高中生的健康减脂兴趣小组，遵循既定原则，分级管理，赏罚分明，旨在通过科学合理的饮食与运动，帮助成员达成健康减脂减重的目标。本俱乐部坚决拥护中国共产党的领导，不含有任何危害社会和人身安全的因素，遵循自愿加入的原则。</p><div class="notice">本页面仅用于小组内部展示组织架构及成员信息。涉及体重管理的活动应遵循科学、健康、安全的原则，不提倡极端节食或不健康的快速减重方式。</div></div></section>
